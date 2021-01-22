@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title></title>
+    <script>
+      (function(win, doc) {
+				var docEl = doc.documentElement;
+				var docWidth;
+	      function setRemUnit() {
+          var ua = navigator.userAgent;
+					var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+					isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+					isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+          isMobile = !!isIphone || !!isAndroid || !!ipad
+					if (isMobile) {
+						docWidth = docEl.clientWidth ;
+					} else {
+						docWidth = docEl.clientWidth > 640 ? 640:docEl.clientWidth ;
+          }
+					var rem = docWidth / 10;
+	        docEl.style.fontSize = rem + 'px';
+	      }
+	      win.addEventListener('resize', function() {
+	        setRemUnit();
+	      }, false);
+	      win.addEventListener('pageshow', function(e) {
+	        if (e.persisted) {
+	          setRemUnit();
+	        }
+        }, false);
+        win.addEventListener('load', function () {
+          var $elem = document.getElementById('scrollView')
+          scrollFix($elem)
+        })
+        function scrollFix (elem) {
+          elem = elem || document.querySelector(elem);
+          if (!elem) return;
+          elem.addEventListener('touchstart', function () {
+            var startTopScroll = elem.scrollTop;
+            if (startTopScroll <= 0) elem.scrollTop = 1;
+            if (startTopScroll + elem.offsetHeight >= elem.scrollHeight) {
+              elem.scrollTop = elem.scrollHeight - elem.offsetHeight - 1;
+            }
+          }, false);
+        }
+	      setRemUnit();
+	    })(window, document)
+  </script>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but vue-base doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

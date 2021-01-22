@@ -1,0 +1,127 @@
+@charset "utf-8";
+
+/*
+	@名称: base
+	@功能: 重置样式，清除浏览器默认样式，并配置适合设计的基础样式（强调文本是否大多是粗体、主文字色，主链接色，主字体等）。
+		   功能样式，从常用样式方法中抽离，按需使用，使用前请先阅读 CSS规范 中相关条列。
+		   常见动画效果的集合，主要用于效果演示和参考，也可以直接调用。
+*/
+
+/* ----------   reset   ---------- */
+* {box-sizing: border-box}
+/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
+html{color:#5a5959;background:rgba(249, 250, 252, 1);-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
+
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0;}
+
+/* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
+
+/* HTML5 媒体文件跟 img 保持一致 */
+audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
+
+/* 要注意表单元素并不继承父级 font 的问题 */
+
+input,select,textarea{font-size:100%;}
+
+/* 去掉各Table  cell 的边距并让其边重合 */
+table{border-collapse:collapse;border-spacing:0;}
+
+/* IE bug fixed: th 不继承 text-align*/
+th,pre,code,kbd,samp{text-align:inherit;}
+
+/* 去除默认边框 */
+fieldset,img{border:0;}
+
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe{display:block;}
+
+/* 去掉 firefox 下此元素的边框 */
+abbr,acronym{border:0;font-variant:normal;}
+
+/* 一致的 del 样式 */
+del{text-decoration:line-through;}
+
+address,caption,cite,code,dfn,em,th,var {font-style:normal;font-weight:500;}
+
+/* 去掉列表前的标识, li 会继承 */
+ol,ul{list-style:none;}
+
+/* 对齐是排版最重要的因素, 别让什么都居中 */
+caption,th{text-align:left;}
+
+/* 来自yahoo, 让标题都自定义, 适应多个系统应用 */
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500;}
+q:before,q:after{content:'';}
+
+/* 统一上标和下标 */
+sub, sup{font-size:75%; line-height:0; position:relative; vertical-align:baseline;}
+sup{ top:-0.5em; }
+sub{ bottom:-0.25em; }
+
+/* 超链接和按钮鼠标手型 */
+a,button{cursor:pointer;}
+
+/* 默认不显示下划线，保持页面简洁 */
+ins,a{text-decoration:none;}
+
+/* 代码字体 */
+code,kbd,pre,samp{font-family:monospace, serif;font-size:1em;}
+
+/* 让字体显示正常 */
+i,cite,em,var,address,dfn{font-style:normal;}
+
+/*去掉浏览器系统默认的触发边框*/
+input,a{outline:0;}
+
+/* 文本域正常显示 */
+textarea{overflow:auto;resize:none;}
+
+/*radio checkbox*/
+.radio,.checkbox{ vertical-align:middle; margin:-2px 3px 0 0; *margin:0 3px 0 0;}
+
+/* ----------   function   ---------- */
+
+/* 清除浮动 */
+.fn-clear:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
+.fn-clear{zoom:1;}    /* for IE6 IE7 */
+/* 隐藏, 通常用来与 JS 配合 */
+body .fn-hide{display:none;}
+h2 {font-size: 1.5em;}
+/* 对齐方式 */
+.fn-tal{text-align:left;}
+.fn-tac{text-align:center;}
+.fn-tar{text-align:right;}
+.fn-taj{text-align:justify;text-justify:inter-ideograph;}
+.fn-vam,.fn-vama *{vertical-align:middle;}
+.fn-wsn{word-wrap:normal;white-space:nowrap;}
+/* 换行 */
+.fn-pre{overflow:hidden;text-align:left;white-space:pre-wrap;word-wrap:break-word;word-break:break-all;}
+.fn-wwb{white-space:normal;word-wrap:break-word;word-break:break-all;}
+/* 文字缩进 */
+.fn-ti{overflow:hidden;text-indent:-30000px;}
+.fn-ti2{text-indent:2em;}
+/* 鼠标触发 */
+.fn-tdu,.fn-tdu:hover{text-decoration:underline;}
+.fn-tdn,.fn-tdn:hover{text-decoration:none;}
+.fn-toe{overflow:hidden;word-wrap:normal;white-space:nowrap;text-overflow:ellipsis;}
+/* 鼠标样式 */
+.fn-csp{cursor:pointer;}
+.fn-csd{cursor:default;}
+.fn-csh{cursor:help;}
+.fn-csm{cursor:move;}
+/* 人民币符号 */
+.fn-rmb{font-family:arial;font-style:normal;padding-right:4px;}
+/* chrome 下字体过小的问题 */
+.fn-webkit-adjust{-webkit-text-size-adjust:none;}
+/* 禁选文本 */
+.fn-usn{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;}
+
+
+::-webkit-scrollbar-track { background: rgba(200, 200, 200, .5); }
+::-webkit-scrollbar { width: 4px; background: rgba(200, 200, 200, .5); border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: rgba(55, 55, 55, .8); border-radius: 2px; }
+
+body,html{ position: absolute; size: 100%; overflow:hidden;padding: 0; font-size: 24px;}
+
